@@ -31,7 +31,7 @@ public class TeamService {
         return null;
     }
 
-    private void removeTeam(Team team) {
+    public void removeTeam(Team team) {
         teams.remove(team);
     }
 

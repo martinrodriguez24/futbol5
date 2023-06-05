@@ -1,5 +1,7 @@
 package com.info.controllers;
 
+import java.io.IOException;
+
 import com.info.utils.ControllerInitUtil;
 import com.info.utils.InputValidatorUtil;
 
@@ -11,13 +13,23 @@ public class MainMenuController {
     CoachController coachController = initializator.getCoachController();
     TeamController teamController = initializator.getTeamController();
 
+    LoadTeamsController loadData = new LoadTeamsController();
+
+    FileReaderController reader = new FileReaderController();
+
     public MainMenuController() {
         this.validator = new InputValidatorUtil();
         this.continueProgram = true;
     }
 
-    public void main() {
-        String menu = "select choice",
+    public void main() throws IOException {
+        loadData.LoadTeamFromTable();
+        String menu = "\nselect choice\n" +
+                "|  [1] :: create team  |\n" +
+                "|  [2] :: list teams   |\n" +
+                "|  [3] :: search team  |\n" +
+                "|  [4] :: remove team  |\n" +
+                "|  [5] :: EXIT         |\n",
                 txt, alertTxt;
         while (continueProgram) {
             System.out.println(menu);
@@ -30,7 +42,7 @@ public class MainMenuController {
         }
     }
 
-    private void selectChoice(int choice) {
+    private void selectChoice(int choice) throws IOException {
         switch (choice) {
             case 1:
                 teamController.CreateTeam();
@@ -39,6 +51,12 @@ public class MainMenuController {
                 teamController.PrintAllTeams();
                 break;
             case 3:
+                teamController.searchTeamAndPrint();
+                break;
+            case 4:
+                teamController.removeTeamByName();
+                break;
+            case 5:
                 this.continueProgram = false;
                 break;
             default:

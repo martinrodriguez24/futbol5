@@ -5,6 +5,7 @@ import java.util.UUID;
 
 import com.info.models.Team;
 import com.info.models.Player.Player;
+import com.info.models.Player.Position;
 import com.info.utils.InputValidatorUtil;
 
 public class PlayerController {
@@ -62,6 +63,21 @@ public class PlayerController {
         player.getPlayerStats().setNumberOfGoals(validator.validateInt(txt, alertTxt, min, max));
 
         team.addPlayer(player);
+    }
+
+    public static Player createPlayerWithArray(String[] data) {
+        Player player = new Player();
+        player.getPlayerDataSheet().setId(UUID.randomUUID());
+        player.setName(data[1]);
+        player.setSurname(data[2]);
+        player.getPlayerDataSheet().setNumberOfShirt(Integer.parseInt(data[3]));
+        player.getPlayerDataSheet().setHeight(Integer.parseInt(data[4]));
+        player.getPlayerDataSheet().setPosition(new Position(data[5]));
+        
+        player.getPlayerStats().setNumberOfGoals(Integer.parseInt(data[6]));
+        player.getPlayerStats().setNumberOfMatches(Integer.parseInt(data[7]));
+
+        return player;
     }
 
     public void createPlayersOfTeam(Team team)  {

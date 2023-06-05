@@ -34,6 +34,15 @@ public class CoachController {
         team.setCoach(coach);
     }
 
+    public static Coach createCoachWithArray(String[] data) {
+        Coach coach = new Coach();
+        coach.setName(data[1]);
+        coach.setSurname(data[2]);
+        coach.setAge(Integer.parseInt(data[3]));
+        
+        return coach;
+    }
+
     public void printCoachOfTeam(Coach coach) {
         System.out.println("***************************");
         String data = "Coach NAME: " + coach.getName() + " " + coach.getSurname() +
