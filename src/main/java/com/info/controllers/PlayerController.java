@@ -43,7 +43,7 @@ public class PlayerController {
 
         txt = "player HEIGHT (cm)";
         alertTxt = "invalid HEIGHT, should be int :: centimeter format [100 - 250]cm";
-        min = 2;
+        min = 100;
         max = 255;
 
         player.getPlayerDataSheet().setHeight(validator.validateInt(txt, alertTxt, min, max));
@@ -81,7 +81,7 @@ public class PlayerController {
     }
 
     public void createPlayersOfTeam(Team team)  {
-        for (int i = 0; i < 2; i++) {
+        for (int i = 0; i < 5; i++) {
             System.out.println("create PLAYER [" +(i+1)+ "] OF 5");
             createPlayer(team);
         }

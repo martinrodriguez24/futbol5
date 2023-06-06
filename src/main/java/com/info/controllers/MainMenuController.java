@@ -14,8 +14,7 @@ public class MainMenuController {
     TeamController teamController = initializator.getTeamController();
 
     LoadTeamsController loadData = new LoadTeamsController();
-
-    FileReaderController reader = new FileReaderController();
+    SaveTeamsController saveData = new SaveTeamsController();
 
     public MainMenuController() {
         this.validator = new InputValidatorUtil();
@@ -29,7 +28,8 @@ public class MainMenuController {
                 "|  [2] :: list teams   |\n" +
                 "|  [3] :: search team  |\n" +
                 "|  [4] :: remove team  |\n" +
-                "|  [5] :: EXIT         |\n",
+                "|  [5] :: save ALL     |\n" +
+                "|  [6] :: EXIT         |\n",
                 txt, alertTxt;
         while (continueProgram) {
             System.out.println(menu);
@@ -57,6 +57,9 @@ public class MainMenuController {
                 teamController.removeTeamByName();
                 break;
             case 5:
+                saveData.saveAllTeams();
+                break;
+            case 6:
                 this.continueProgram = false;
                 break;
             default:
