@@ -50,7 +50,7 @@ public class InputValidatorUtil {
     }
 
     private boolean isValidString(String input, int min, int max) {
-        if (input.matches("^[a-zA-Z ]+$") && input.length() >= min && input.length() <= max) {
+        if (input.matches("[a-zA-Z]+") && input.length() >= min && input.length() <= max) {
             return true;
         }
         return false;
