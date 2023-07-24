@@ -2,7 +2,7 @@ package com.info;
 
 import java.io.IOException;
 
-import com.info.controllers.MainMenuController;
+import com.info.controller.MainMenuController;
 
 /**
  * Hello world!
